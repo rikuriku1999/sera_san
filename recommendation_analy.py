@@ -47,4 +47,4 @@ if __name__ == '__main__':
     for name in name_dict.keys():
         files = glob.glob(name +'_csv/*')
         final_df = datasetting(files, name_dict[name])
-        final_df.to_csv("output/" + name + '_recomendation.csv')
+        final_df.to_csv("output_recommend/" + name + '_recomendation.csv')
