@@ -29,16 +29,16 @@ def datasetting(files,cancel_list,name):
             dff_list = []
             df = df[["time","SajoAnker","MizuKukan","MizuAction","goho","AutoHunmuLog"]]
             for feature in features:
-                changed_values = df[df[feature].diff() > 0].index.values
+                changed_values = df[abs(df[feature].diff()) > 0].index.values
                 for value in changed_values:
                     if not value in dff_list:
                         dff_list.append(value)
             dff_list.sort()
             final_df = df.iloc[dff_list]
-            toCsv(final_df,joken,name)
+            toCsv(final_df,file_name ,joken,name)
 
-def toCsv(df,joken,name):
-    df.to_csv("output/" + name + str(joken) + '.csv')
+def toCsv(df,file_name,joken,name):
+    df.to_csv("output/" + name + str(file_name) + "-" + str(joken) + '.csv')
 
 
 name_dict = {"stephanie":[i for i in range(100)], "riku":riku_cancel_list, "ono":ono_cancel_list}
