@@ -26,6 +26,7 @@ def datasetting(files, cancel_list):
             num = df[df['joken'] > 1].head(1).index.values[0]
             start_num = df["time"].iat[num]
             joken = df["joken"].iat[num]
+            joken = str(file_name) + "_" + str(joken)
             joken_list.append(joken)
             df = df[df['joken'] > 1]
             df["time"] = df["time"] - start_num
